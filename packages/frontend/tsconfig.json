@@ -1,0 +1,45 @@
+{
+    "compilerOptions": {
+        "jsx": "react-jsx",
+        "jsxImportSource": "@emotion/react",
+        "baseUrl": ".",
+        "paths": {
+            "~assets/*": [
+                "src/assets/*"
+            ],
+            "~modules/*": [
+                "src/modules/*"
+            ],
+            "~router/*": [
+                "src/router/*"
+            ],
+            "~shared/*": [
+                "src/shared/*"
+            ],
+            "~store/*": [
+                "src/store/*"
+            ],
+            "~typings/*": [
+                "src/typings/*"
+            ],
+            "~/*": [
+                "src/*"
+            ],
+            "~interfaces/*": [
+                "src/interfaces/*"
+            ],
+            "~utils/*": [
+                "src/utils/*"
+            ],
+            "~hooks/*": [
+                "src/hooks/*"
+            ],
+            "~changePasswordPage/*": [
+                "src/modules/changePasswordPage/*"
+            ],
+            "~forgotPasswordPage/*": [
+                "src/modules/forgotPasswordPage/*"
+            ]
+        }
+    }
+}
