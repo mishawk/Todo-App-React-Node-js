@@ -30,7 +30,6 @@ export class JwtAuthentication implements IMiddleware {
 			this.jwtOptions,
 			this.verifyUser.bind(this),
 		);
-		console.log(this.jwtOptions.secretOrKey);
 		passport.use(this.jwtStrategy);
 	}
 
@@ -42,6 +41,8 @@ export class JwtAuthentication implements IMiddleware {
 			const user: UserType | null = await this.userService.getUserById(
 				jwtPayload.id,
 			);
+
+			console.log(user);
 
 			if (user) {
 				return done(null, user);
