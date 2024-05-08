@@ -131,7 +131,7 @@ export class TodoController extends BaseController implements ITodoController {
 
 		const decodedToken = jwt.verify(
 			token,
-			this.configService.get('JWT_SECRET'),
+			process.env.JWT_SECRET || this.configService.get('JWT_SECRET'),
 		) as JwtPayload;
 
 		if (!decodedToken.id) {
