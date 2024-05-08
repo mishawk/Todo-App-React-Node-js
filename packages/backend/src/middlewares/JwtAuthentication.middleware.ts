@@ -22,13 +22,15 @@ export class JwtAuthentication implements IMiddleware {
 	) {
 		this.jwtOptions = {
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-			secretOrKey: 'MIsha' || configService.get('JWT_SECRET'),
+			secretOrKey:
+				process.env.JWT_SECRET || configService.get('JWT_SECRET'),
 		};
 		this.userService = new UserService(configService, userRepository);
 		this.jwtStrategy = new JwtStrategy(
 			this.jwtOptions,
 			this.verifyUser.bind(this),
 		);
+		console.log(this.jwtOptions.secretOrKey);
 		passport.use(this.jwtStrategy);
 	}
 
