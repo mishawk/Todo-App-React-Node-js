@@ -22,8 +22,7 @@ export class JwtAuthentication implements IMiddleware {
 	) {
 		this.jwtOptions = {
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-			secretOrKey:
-				process.env.JWT_SECRET || configService.get('JWT_SECRET'),
+			secretOrKey: 'MIsha' || configService.get('JWT_SECRET'),
 		};
 		this.userService = new UserService(configService, userRepository);
 		this.jwtStrategy = new JwtStrategy(
