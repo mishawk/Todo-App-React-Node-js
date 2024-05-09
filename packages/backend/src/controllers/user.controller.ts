@@ -201,7 +201,7 @@ export class UserController extends BaseController implements IUserController {
 			to: userEmail,
 			subject: 'Please verify your account',
 			html: `Please click on the following link to verify your account: 
-        <a href="http://localhost:4201/users/verifyToken/${verificationToken}">Verify Token!</a>`,
+        <a href="https://todo-app-react-node-js.onrender.com/users/verifyToken/${verificationToken}">Verify Token!</a>`,
 		};
 
 		transporter.sendMail(mailOptions, function (error, info) {
