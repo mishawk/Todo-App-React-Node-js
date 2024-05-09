@@ -97,17 +97,13 @@ const TabletTodoContainer = (): React.ReactNode => {
 							</Button>
 						</div>
 
-						{isLoading && <Loader />}
-
-						{!isLoading && (
-							<TabletTodoSlider
-								setLocalCounter={setLocalCounter}
-								localCounter={localCounter}
-								requestCounter={requestCounter}
-								setRequestCounter={setRequestCounter}
-								setOffset={setOffset}
-							/>
-						)}
+						<TabletTodoSlider
+							setLocalCounter={setLocalCounter}
+							localCounter={localCounter}
+							requestCounter={requestCounter}
+							setRequestCounter={setRequestCounter}
+							setOffset={setOffset}
+						/>
 					</div>
 				</form>
 			)}

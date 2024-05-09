@@ -3,6 +3,7 @@ import { colors } from '~shared/styles';
 
 export const cardStyles = css`
 	height: 500px;
+	width: 1040px;
 `;
 
 export const tableStyle = css`
@@ -39,4 +40,11 @@ export const actionsStyle = css`
 
 export const noTasksStyle = css`
 	text-align: center;
+`;
+
+export const loaderContainerStyles = css`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
 `;

@@ -7,3 +7,10 @@ export const noTodosMessage = css`
 	font-size: 18px;
 	color: ${colors.noTodosMessageColor};
 `;
+
+export const loaderContainerStyles = css`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+`;

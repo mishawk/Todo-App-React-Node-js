@@ -7,6 +7,7 @@ import {
 	actionsStyle,
 	noTasksStyle,
 	cardStyles,
+	loaderContainerStyles,
 } from './desktopTodoList.styles';
 import DesktopTodoItem from '../desktopTodoItem/desktopTodoItem';
 import { useTodoStore } from '~store/todo.store';
@@ -17,27 +18,25 @@ interface Props {
 	handlePageChange: (selectedItem: unknown) => void;
 	pageCount: number;
 	currentPage: number;
-	isLoading: boolean;
+	isFetching: boolean;
 }
 
 const DesktopTodoList: React.FC<Props> = ({
 	handlePageChange,
 	pageCount,
 	currentPage,
-	isLoading,
+	isFetching,
 }) => {
 	const { todos } = useTodoStore();
 
 	return (
 		<>
-			{isLoading ? (
-				<Loader />
-			) : (
-				<Card
-					interactive={true}
-					elevation={Elevation.TWO}
-					css={cardStyles}
-				>
+			<Card interactive={true} elevation={Elevation.TWO} css={cardStyles}>
+				{isFetching ? (
+					<div css={loaderContainerStyles}>
+						<Loader />
+					</div>
+				) : (
 					<HTMLTable css={tableStyle}>
 						<thead>
 							<tr>
@@ -64,16 +63,16 @@ const DesktopTodoList: React.FC<Props> = ({
 							)}
 						</tbody>
 					</HTMLTable>
+				)}
 
-					{todos.length > 0 && (
-						<DesktopPagination
-							handlePageChange={handlePageChange}
-							pageCount={pageCount}
-							currentPage={currentPage}
-						/>
-					)}
-				</Card>
-			)}
+				{todos.length > 0 && (
+					<DesktopPagination
+						handlePageChange={handlePageChange}
+						pageCount={pageCount}
+						currentPage={currentPage}
+					/>
+				)}
+			</Card>
 		</>
 	);
 };

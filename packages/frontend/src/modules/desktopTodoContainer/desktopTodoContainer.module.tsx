@@ -23,13 +23,16 @@ const DesktopTodoContainer = (): React.ReactNode => {
 		fetchFilteredTodos,
 		pageCount,
 		setCurrentPage,
-		isLoading,
 	} = useFilteredPaginatedTodos(DESKTOP_ITEMS_PER_PAGE);
 
 	const debouncedInput = useDebounce(input, 300);
+	const [isFetching, setIsFetching] = React.useState(false);
 
 	useEffect(() => {
-		fetchFilteredTodos(debouncedInput, selectedTab, currentPage);
+		setIsFetching(true);
+		fetchFilteredTodos(debouncedInput, selectedTab, currentPage).finally(
+			() => setIsFetching(false),
+		);
 	}, [debouncedInput, selectedTab, currentPage]);
 
 	const handleInputChange = (
@@ -74,7 +77,7 @@ const DesktopTodoContainer = (): React.ReactNode => {
 													}
 													pageCount={pageCount}
 													currentPage={currentPage}
-													isLoading={isLoading}
+													isFetching={isFetching}
 												/>
 											}
 										/>

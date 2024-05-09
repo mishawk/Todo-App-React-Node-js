@@ -13,6 +13,8 @@ import { useFilteredPaginatedTodos } from '~/hooks/useFilteredPaginatedTodos';
 import { MOBILE_ITEMS_PER_PAGE } from '~typings/constants';
 import useDebounce from '~/hooks/useDebounce';
 import { useEffect } from 'react';
+import Loader from '~shared/components/loader/loader.component';
+import { loaderContainerStyles } from './mobileTodoList/mobileTodoList.styles';
 
 const MobileTabsContainer = (): React.ReactNode => {
 	const {
@@ -28,9 +30,13 @@ const MobileTabsContainer = (): React.ReactNode => {
 	} = useFilteredPaginatedTodos(MOBILE_ITEMS_PER_PAGE);
 
 	const debouncedInput = useDebounce(input, 300);
+	const [isFetching, setIsFetching] = React.useState(false);
 
 	useEffect(() => {
-		fetchFilteredTodos(debouncedInput, selectedTab, currentPage);
+		setIsFetching(true);
+		fetchFilteredTodos(debouncedInput, selectedTab, currentPage).finally(
+			() => setIsFetching(false),
+		);
 	}, [debouncedInput, selectedTab, currentPage]);
 
 	const handleInputChange = (
@@ -89,14 +95,26 @@ const MobileTabsContainer = (): React.ReactNode => {
 											id={tab.id}
 											title={tab.title}
 											panel={
-												<MobileTodoList
-													handlePageChange={
-														handlePageChange
-													}
-													pageCount={pageCount}
-													currentPage={currentPage}
-													isLoading={isLoading}
-												/>
+												isFetching ? (
+													<div
+														css={
+															loaderContainerStyles
+														}
+													>
+														<Loader />
+													</div>
+												) : (
+													<MobileTodoList
+														handlePageChange={
+															handlePageChange
+														}
+														pageCount={pageCount}
+														currentPage={
+															currentPage
+														}
+														isLoading={isLoading}
+													/>
+												)
 											}
 										/>
 									))}
