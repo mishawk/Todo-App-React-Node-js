@@ -1,4 +1,4 @@
-import{c as n,b as d,j as e,C as v,a as w,G as k,B as u,F as c,u as P,h as I,r as M,g as F,e as L,f as B}from"./index-783f7d3d.js";import{T as j,R as E,u as G}from"./useFilteredPaginatedTodos-58ca7853.js";import{U as R,u as D,M as N,C as _,a as U,t as h,b as z}from"./generateQueryParams-d26a52c4.js";const A=n`
+import{c as n,b as d,j as e,C as v,a as w,G as k,B as u,F as c,u as P,h as I,r as M,g as F,e as L,f as B}from"./index-39178980.js";import{T as j,R as E,u as G}from"./useFilteredPaginatedTodos-5132bfb2.js";import{U as R,u as D,M as N,C as _,a as U,t as h,b as z}from"./generateQueryParams-5a1582ab.js";const A=n`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
